@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:11:34 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:15:41 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 18:17:26 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ t_cpu			*ft_ldi(t_mars **mars, t_cpu *cpu, int mod)
 	arg3 = ft_get_ldi_arg(*mars, cpu, 1, &n);
 	if (!ft_check_ld_reg(cpu, type, &arg1, &arg2) || arg3 > 15)
 		return (cpu);
-	cpu->carry = (cpu->reg[arg3] = ft_load_regsize(*mars,
-		(cpu->pc - 1) + arg1 + arg2)) ? 0 : 1;
+	cpu->reg[arg3] = ft_load_regsize(*mars, (cpu->pc - 1) + arg1 + arg2);
+	cpu->carry = cpu->reg[arg3] ? 0 : 1;
 	cpu->pc += n;
 	return (cpu);
 }

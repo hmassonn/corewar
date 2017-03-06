@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:18:10 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:27:02 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 18:16:11 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ t_cpu				*ft_ld(t_mars **mars, t_cpu *cpu, int mod)
 	arg2 = ft_get_ld_arg(*mars, cpu, 1, &n);
 	if (arg2 > 15)
 		return (cpu);
-	cpu->carry = (cpu->reg[arg2] = arg1) ? 0 : 1;
+	cpu->reg[arg2] = arg1;
+	cpu->carry = cpu->reg[arg2] ? 0 : 1;
 	cpu->pc += n;
 	return (cpu);
 }

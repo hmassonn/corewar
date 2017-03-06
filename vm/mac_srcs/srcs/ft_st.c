@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 16:56:50 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:33:14 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 18:41:15 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ long long int		ft_get_st_arg(t_mars *mars, t_cpu *cpu, int type, int *n)
 	if (arg >> 15)
 		arg -= 0x10000;
 	return (arg);
+}
+
+static void			ft_put_print(t_mars **mars,
+	t_cpu *cpu, int arg1, long long int	arg2)
+{
+	ft_printf("%02x %02x %02x %02x %02x\n",
+	(*mars)->arena[(cpu->pc - 1) % MEM_SIZE],
+	(*mars)->arena[cpu->pc % MEM_SIZE],
+	(*mars)->arena[(cpu->pc + 1) % MEM_SIZE],
+	(*mars)->arena[(cpu->pc + 2) % MEM_SIZE],
+	(*mars)->arena[(cpu->pc + 3) % MEM_SIZE]);
+	ft_printf("st r%d %d\n", arg1 + 1, arg2);
+	ft_print_on_mars(mars, cpu->reg[arg1],
+		(cpu->pc - 1) + (arg2 % IDX_MOD), cpu->color);
 }
 
 t_cpu				*ft_st(t_mars **mars, t_cpu *cpu)
@@ -46,17 +60,7 @@ t_cpu				*ft_st(t_mars **mars, t_cpu *cpu)
 	else if ((type >> 4 & 0b11) == 1)
 		cpu->reg[arg2] = cpu->reg[arg1];
 	else
-	{
-		ft_printf("%02x %02x %02x %02x %02x\n",
-		(*mars)->arena[(cpu->pc - 1) % MEM_SIZE],
-		(*mars)->arena[cpu->pc % MEM_SIZE],
-		(*mars)->arena[(cpu->pc + 1) % MEM_SIZE],
-		(*mars)->arena[(cpu->pc + 2) % MEM_SIZE],
-		(*mars)->arena[(cpu->pc + 3) % MEM_SIZE]);
-		ft_printf("st r%d %d\n", arg1 + 1, arg2);
-		ft_print_on_mars(mars, cpu->reg[arg1],
-			(cpu->pc - 1) + (arg2 % IDX_MOD), cpu->color);
-	}
+		ft_put_print(mars, cpu, arg1, arg2);
 	cpu->pc += n;
 	return (cpu);
 }

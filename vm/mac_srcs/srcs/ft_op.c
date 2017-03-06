@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:02:05 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:05:42 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 18:33:51 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,10 @@ t_cpu			*ft_binary_op(t_mars **mars, t_cpu *cpu, char op)
 	if (!ft_check_op_reg(cpu, type, &arg1, &arg2) || arg3 > 15)
 		return (cpu);
 	if (op == 0x06)
-		cpu->carry = (cpu->reg[arg3] = arg1 & arg2) ? 0 : 1;
-	else if (op == 0x07)
-		cpu->carry = (cpu->reg[arg3] = arg1 | arg2) ? 0 : 1;
+		cpu->reg[arg3] = arg1 & arg2;
 	else
-		cpu->carry = (cpu->reg[arg3] = arg1 ^ arg2) ? 0 : 1;
+		cpu->reg[arg3] = (op == 0x07) ? arg1 | arg2 : arg1 ^ arg2;
+	cpu->carry = cpu->reg[arg3] ? 0 : 1;
 	cpu->pc += n;
 	return (cpu);
 }

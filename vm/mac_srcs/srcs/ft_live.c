@@ -6,13 +6,19 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:11:15 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:11:27 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 18:38:58 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_cpu	*ft_live(t_mars **mars, t_cpu *cpu)
+static void	ft_print_one_line(t_cpu *cpu)
+{
+	ft_printf("un processus dit que le joueur %d(%s) est en vie\n",
+	cpu->color, cpu->name);
+}
+
+t_cpu		*ft_live(t_mars **mars, t_cpu *cpu)
 {
 	unsigned int	uid;
 	int				i;
@@ -32,8 +38,7 @@ t_cpu	*ft_live(t_mars **mars, t_cpu *cpu)
 		if ((*mars)->players[i++] == uid)
 		{
 			if (!((*mars)->opt & 0b00100000))
-				ft_printf("un processus dit que le joueur %d(%s) est en vie\n",
-			cpu->color, cpu->name);
+				ft_print_one_line(cpu);
 			(*mars)->last_live = uid;
 		}
 	}
