@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:27:20 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:27:34 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 21:47:20 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void		ft_draw_grid(t_mars *mars)
 
 void		ft_mlx_init(t_mars *mars)
 {
-	mars->mlx = (t_mlx*)malloc(sizeof(t_mars));
+	if (!(mars->mlx = (t_mlx*)malloc(sizeof(t_mars))))
+		exit(0);
 	mars->mlx->mlx = mlx_init();
 	mars->mlx->win = mlx_new_window(mars->mlx->mlx,
 			X_WIN, Y_WIN, "COREWAR\tby \"alphacore\"");

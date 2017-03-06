@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 16:56:50 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 18:41:15 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 21:50:56 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ long long int		ft_get_st_arg(t_mars *mars, t_cpu *cpu, int type, int *n)
 }
 
 static void			ft_put_print(t_mars **mars,
-	t_cpu *cpu, int arg1, long long int	arg2)
+	t_cpu *cpu, int arg1, long long int arg2)
 {
 	ft_printf("%02x %02x %02x %02x %02x\n",
 	(*mars)->arena[(cpu->pc - 1) % MEM_SIZE],

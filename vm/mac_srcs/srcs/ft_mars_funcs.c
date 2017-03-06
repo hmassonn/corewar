@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:06:48 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:10:11 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 21:47:41 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ t_mars	*ft_new_mars(t_cpu **cpu, char opt, int dump)
 {
 	t_mars	*mars;
 
-	mars = (t_mars*)ft_memalloc(sizeof(t_mars));
+	if (!(mars = (t_mars*)ft_memalloc(sizeof(t_mars))))
+		exit(0);
 	ft_bzero(mars->arena, MEM_SIZE * sizeof(unsigned char));
 	ft_bzero(mars->arena_color, MEM_SIZE * sizeof(short int));
 	ft_fill_arena(mars, cpu);

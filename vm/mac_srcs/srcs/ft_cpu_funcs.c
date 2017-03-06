@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:29:11 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:31:15 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 21:55:18 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,17 @@ int		ft_get_cpu_info(int fd, t_cpu *cpu)
 	cpu->size = ft_get_code_size(fd);
 	if (cpu->size > CHAMP_MAX_SIZE)
 		return (0);
-	cpu->code = (unsigned char*)ft_memalloc(cpu->size);
-	read(fd, cpu->code, cpu->size);
-	return (1);
+	if (!(cpu->code = (unsigned char*)ft_memalloc(cpu->size)))
+		exit(0);
+	return (read(fd, cpu->code, cpu->size) ? 1 : 1);
 }
 
 t_cpu	*ft_new_cpu(int fd, int uid, int color)
 {
 	t_cpu	*cpu;
 
-	cpu = (t_cpu*)ft_memalloc(sizeof(t_cpu));
+	if (!(cpu = (t_cpu*)ft_memalloc(sizeof(t_cpu))))
+		exit(0);
 	cpu->next = NULL;
 	cpu->live = 0;
 	cpu->pc = 0;

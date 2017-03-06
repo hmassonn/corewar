@@ -6,7 +6,7 @@
 /*   By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 17:27:52 by hmassonn          #+#    #+#             */
-/*   Updated: 2017/03/06 17:28:32 by hmassonn         ###   ########.fr       */
+/*   Updated: 2017/03/06 21:46:53 by hmassonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_cpu	*ft_new_cpucpy(t_cpu *src, int address)
 	t_cpu	*cpu;
 	int		i;
 
-	cpu = (t_cpu*)ft_memalloc(sizeof(t_cpu));
+	if (!(cpu = (t_cpu*)ft_memalloc(sizeof(t_cpu))))
+		exit(0);
 	cpu->next = NULL;
 	cpu->live = src->live;
 	cpu->pc = address;
