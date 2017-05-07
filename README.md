@@ -1,7 +1,7 @@
 Corewar
 =====
 
-<img src="/sebastiencs/Corewar_x86/raw/master/img/corewar.png?raw=true" alt="Alt text" style="max-width:100%;">
+<img src="https://raw.githubusercontent.com/sebastiencs/Corewar_x86/master/img/corewar.png" alt="Alt text" style="max-width:100%;">
 
 CoreWar
 ==============
