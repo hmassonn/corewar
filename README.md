@@ -1,7 +1,7 @@
 Corewar
 =====
 
-![Alt text](/sebastiencs/Corewar_x86/raw/master/img/corewar.png?raw=true)
+<img src="/olag18/corewar/raw/master/sebastiencs/Corewar_x86/raw/master/img/corewar.png?raw=true" alt="Alt text" style="max-width:100%;">
 
 CoreWar
 ==============
