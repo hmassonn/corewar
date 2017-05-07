@@ -1,7 +1,7 @@
 Corewar
 =====
 
-![Alt text](/sebastiencs/Corewar_x86/raw/master/img/corewar.png?raw=true "Corewar ASM")
+![Alt text](/sebastiencs/Corewar_x86/raw/master/img/corewar.png?raw=true)
 
 CoreWar
 ==============
