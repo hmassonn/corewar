@@ -8,8 +8,8 @@ CoreWar
 
 Project
 -------
-The project is 2 months and a half project, with a 4 member team.
-The team was Fabien Linard (Project leader, worked on ASM), Nicolas Bridoux (worked on ASM), Rémi Robert (worked on VM), et Guillaume Fillon (worked on VM and the SDL).
+The project is a months project, with a 3 member team.
+The team was Hugo MASSONNET, Charles LANIER, et Bastien LE QUERE DUMONT.
 
 Core War is a programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode.
 
@@ -17,9 +17,8 @@ Compile the project
 ------------
 
 ```sh
-$ git clone git@github.com:kokaz/corewar.git
+$ git clone https://github.com/olag18/corewar.git
 $ cd corewar
-$ sudo apt-get install libsdl1.2-dev
 $ make
 ```
 
