@@ -16,7 +16,7 @@ extern t_op g_op_tab[];
 
 int		calc_top_label(t_inst *tmp, char *newlab)
 {
-	int		size;
+	long int	size;
 
 	size = 4294967295;
 	size++;
@@ -38,7 +38,7 @@ int		calc_top_label(t_inst *tmp, char *newlab)
 
 int		calc_down_label(t_inst *tmp, char *newlab)
 {
-	int size;
+	int 		size;
 
 	size = 0;
 	while (tmp)
