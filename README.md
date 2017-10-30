@@ -56,9 +56,9 @@ Assembler instructions (in French)
 |0x06 (and)|p1 & p2 -> p3 le paramètre 3 et toujours un registre. Cette opération modifie le carry. `and r2,%0,r3` met r2 & 0 dans r3|
 |0x07 (or)|Même que and mais avec le ou (&#124; du c).|
 |0x08 (xor)|Même que and mais avec le ou exclusif (^ du c).|
-|0x09 (zjmp)|Cette instruction n’est pas suivie d’octet pour décrire les paramètres. Elle prend toujours un index (`IND_SIZE(2)`) et fait un saut a cet index si le carry est à un. Si le carry est nul, zjmp ne fait rien mais consomme le même temps. `zjmp %23` met si carry == 1 met `(PC + (23 % IDX_MOD(512)))` dans le PC.|
+|0x09 (zjmp)|Cette instruction n’est pas suivie d’octet pour décrire les paramètres. Elle prend toujours un index (`IND_SIZE(2)`) et fait un saut a cet index si le carry est à un. Si le carry est nul, zjmp ne fait rien mais consomme le même temps. `zjmp %23` si (carry == 1) met `(PC + (23 % IDX_MOD(512)))` dans le PC.|
 |0x0A (ldi)|Cette opération modifie le carry. `ldi 3,%4,r1` lit `IND_SIZE(2)` octets à l’adresse : `(PC + (3 % IDX_MOD(512)))` ajoute 4 à cette valeur. On nommera S cette somme. On lit `REG_SIZE(4)` octets a l’adresse `(PC + (S % IDX_MOD(512)))` qu’on copie dans r1. Les paramètre 1 et 2 sont des index.|
-|0x0B (sti)|`sti r2,%4,%5` sti copie `REG_SIZE(4)` octets de r2 a l’adresse `(4 + 5)`. Les paramètres 2 et 3 sont des index. Si les paramètres 2 ou 3 sont des registres, on utilisera leur contenu comme un index.|
+|0x0B (sti)|`sti r2,%4,%5` sti copie `REG_SIZE(4)` octets de r2 a l’adresse `(4 + 5) % IDX_MOD(512)`. Les paramètres 2 et 3 sont des index. Si les paramètres 2 ou 3 sont des registres, on utilisera leur contenu comme un index.|
 0x0C (fork)|Cette instruction n’est pas suivie d’octet pour décrire les paramètres. Elle prend toujours un index et crée un nouveau programme qui s’exécute a partir de l’adresse:`(PC + (premier paramètre % IDX_MOD(512)))`<br>`fork %34` crée un nouveau programme. Le nouveau programme hérite des différents états du père.|
 0x0D (lld)|Comme ld sans le `%IDX_MOD(512)` Cette opération modifie le carry.|
 0x0E (lldi)|Comme ldi sans le `%IDX_MOD(512)` Cette opération modifie le carry.|
