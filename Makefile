@@ -1,30 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hmassonn <hmassonn@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/03/06 18:50:06 by hmassonn          #+#    #+#              #
-#    Updated: 2017/03/06 19:05:27 by hmassonn         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+COREWAR_NAME	=	corewar
+ASM_NAME		=	asm
+SHEL			=	/bin/bash
 
-ASM_DIR		=	asm/
-VM_DIR		=	vm/
+LIBFT_DIR		=	libft/
+COREWAR_DIR		=	corewar_srcs/
+ASM_DIR			=	asm_srcs/
+
+.PHONY : all clean norme fclean re
 
 all :
-	make -C $(ASM_DIR)
-	make -C $(VM_DIR) mac
+	@make --no-print-directory -C $(LIBFT_DIR)
+	@make --no-print-directory -C $(COREWAR_DIR)
+	@cp $(addprefix $(COREWAR_DIR), $(COREWAR_NAME)) ./
+	@make --no-print-directory -C $(ASM_DIR)
+	@cp $(addprefix $(ASM_DIR), $(ASM_NAME)) ./
+
+norme :
+	@make norme --no-print-directory -C $(LIBFT_DIR)
+	@make norme --no-print-directory -C $(COREWAR_DIR)
+	@make norme --no-print-directory -C $(ASM_DIR)
 
 clean :
-	@make clean -C $(ASM_DIR)
-	@make clean -C $(VM_DIR)
+	@make clean --no-print-directory -C $(LIBFT_DIR)
+	@make clean --no-print-directory -C $(COREWAR_DIR)
+	@make clean --no-print-directory -C $(ASM_DIR)
 
 fclean :
-	@make fclean -C $(ASM_DIR)
-	@make fclean -C $(VM_DIR)
+	@rm -rf $(COREWAR_NAME)
+	@rm -rf $(ASM_NAME)
+	@make fclean --no-print-directory -C $(LIBFT_DIR)
+	@make fclean --no-print-directory -C $(COREWAR_DIR)
+	@make fclean --no-print-directory -C $(ASM_DIR)
 
 re : fclean all
-
-.PHONY : all clean asm vm
